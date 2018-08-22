@@ -1,0 +1,4 @@
+outputDir/
+outputDir/abundance.tsv
+outputDir/abundance.h5
+outputDir/run_info.json

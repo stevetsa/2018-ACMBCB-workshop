@@ -1,0 +1,32 @@
+#!/bin/bash
+
+cd /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/execution
+tmpDir=$(mkdir -p "/home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/tmp.6b2cd42e" && echo "/home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/tmp.6b2cd42e")
+
+export _JAVA_OPTIONS=-Djava.io.tmpdir="$tmpDir"
+export TMPDIR="$tmpDir"
+export HOME="$HOME"
+(
+cd /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/execution
+
+)
+(
+cd /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/execution
+
+
+kallisto quant -o outputDir -i /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/inputs/-1616451889/transcript_index /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/inputs/-1268103715/reads_1.fastq.gz /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/inputs/-1268103715/reads_1.fastq.gz
+tar -zcvf quant.tar.gz outputDir
+)  > '/home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/execution/stdout' 2> '/home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/execution/stderr'
+echo $? > /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/execution/rc.tmp
+(
+# add a .file in every empty directory to facilitate directory delocalization on the cloud
+cd /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/execution
+find . -type d -empty -print0 | xargs -0 -I % touch %/.file
+)
+(
+cd /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/execution
+sync
+
+
+)
+mv /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/execution/rc.tmp /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/execution/rc

@@ -1,0 +1,8 @@
+
+[build] loading fasta file /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/inputs/-1268103715/transcripts.fasta.gz
+[build] k-mer length: 31
+[build] counting k-mers ... done.
+[build] building target de Bruijn graph ...  done 
+[build] creating equivalence classes ...  done
+[build] target de Bruijn graph has 23 contigs and contains 18902 k-mers 
+

@@ -1,0 +1,13 @@
+{
+	"n_targets": 15,
+	"n_bootstraps": 0,
+	"n_processed": 10000,
+	"n_pseudoaligned": 10000,
+	"n_unique": 6801,
+	"p_pseudoaligned": 100.0,
+	"p_unique": 68.0,
+	"kallisto_version": "0.44.0",
+	"index_version": 10,
+	"start_time": "Wed Aug 22 18:29:15 2018",
+	"call": "kallisto quant -o outputDir -i /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/inputs/-1616451889/transcript_index /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/inputs/-1268103715/reads_1.fastq.gz /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-quant/inputs/-1268103715/reads_1.fastq.gz"
+}

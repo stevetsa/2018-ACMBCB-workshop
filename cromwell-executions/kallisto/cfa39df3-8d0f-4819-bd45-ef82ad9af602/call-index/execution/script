@@ -1,0 +1,31 @@
+#!/bin/bash
+
+cd /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/execution
+tmpDir=$(mkdir -p "/home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/tmp.2b760903" && echo "/home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/tmp.2b760903")
+
+export _JAVA_OPTIONS=-Djava.io.tmpdir="$tmpDir"
+export TMPDIR="$tmpDir"
+export HOME="$HOME"
+(
+cd /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/execution
+
+)
+(
+cd /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/execution
+
+
+kallisto index -i transcript_index /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/inputs/-1268103715/transcripts.fasta.gz
+)  > '/home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/execution/stdout' 2> '/home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/execution/stderr'
+echo $? > /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/execution/rc.tmp
+(
+# add a .file in every empty directory to facilitate directory delocalization on the cloud
+cd /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/execution
+find . -type d -empty -print0 | xargs -0 -I % touch %/.file
+)
+(
+cd /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/execution
+sync
+
+
+)
+mv /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/execution/rc.tmp /home/ubuntu/2018-ACMBCB-workshop/cromwell-executions/kallisto/cfa39df3-8d0f-4819-bd45-ef82ad9af602/call-index/execution/rc
