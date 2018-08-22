@@ -1,1 +1,6 @@
-entity:sample_id	participant_id	FASTQ1	FASTQ2patient1_sample	patient1	gs://fc-24bec393-e1b9-4ee9-988b-a839db1fba50/reads_1.fastq.gz	gs://fc-24bec393-e1b9-4ee9-988b-a839db1fba50/reads_2.fastq.gzpatient2_sample	patient2	patient3_sample	patient3patient4_sample	patient4patient5_sample	patient4
+entity:sample_id	participant_id	FASTQ1	FASTQ2
+patient1_sample	patient1	gs://fc-24bec393-e1b9-4ee9-988b-a839db1fba50/reads_1.fastq.gz	gs://fc-24bec393-e1b9-4ee9-988b-a839db1fba50/reads_2.fastq.gz
+patient2_sample	patient2		
+patient3_sample	patient3		
+patient4_sample	patient4		
+patient5_sample	patient5		
