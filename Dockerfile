@@ -50,3 +50,6 @@ WORKDIR build
 RUN cmake ..
 RUN make
 RUN make install
+
+WORKDIR /opt
+RUN git clone https://github.com/stevetsa/2018-ACMBCB-workshop.git
