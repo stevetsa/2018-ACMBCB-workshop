@@ -1,0 +1,1 @@
+membership:sample_set_id	sampleset10	patient1_sampleset10	patient3_sampleset10	patient5_sampleset20	patient2_sampleset20	patient4_sample

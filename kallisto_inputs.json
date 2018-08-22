@@ -1,0 +1,6 @@
+{
+  "kallisto.read1": "reads_1.fastq.gz",
+  "kallisto.fasta": "transcripts.fasta.gz",
+  "kallisto.read2": "reads_1.fastq.gz"
+}
+
