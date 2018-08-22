@@ -1,9 +1,16 @@
-# Cromwell Releases
-# https://github.com/broadinstitute/cromwell/releases/tag/34
+###  This image is created for the 2018 ACM-BCB Workshop
+###  NCI Cloud Resources
+###  https://stevetsa.github.io/post/acmbcb-ncicr/
 
 
 FROM ubuntu:17.10
 LABEL maintainer="Steve Tsang <mylagimail2004@yahoo.com>"
+
+###
+### Install Cromwell and WDL Tools
+### Cromwell Releases 34
+### https://github.com/broadinstitute/cromwell/releases/tag/34
+###
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get -yq dist-upgrade \
@@ -20,14 +27,16 @@ RUN wget https://github.com/broadinstitute/cromwell/releases/download/34/cromwel
 RUN wget https://github.com/broadinstitute/cromwell/releases/download/34/womtool-34.jar
 RUN cp *.jar /usr/local/bin
 
+###
+###  Install Kallisto
+###  https://github.com/pachterlab/kallisto
+###
+
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes \
- build-essential \
  gcc-multilib \
- apt-utils \
  zlib1g-dev \
  cmake \
  libhdf5-dev \
- git-all \
  autoconf \
  automake \
  libcurl4-openssl-dev \
