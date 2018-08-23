@@ -2,6 +2,7 @@ workflow kallisto {
   File fasta    
   File read1
   File read2
+  String outdirname
 
   call index {
     input:
@@ -12,7 +13,8 @@ workflow kallisto {
     input:
       INDEX = index.indexFASTA,
       READ1 = read1,
-      READ2 = read2
+      READ2 = read2,
+      OUTDIR = outdirname
   }
 }
 
@@ -32,13 +34,14 @@ task quant {
   File INDEX
   File READ1
   File READ2
+  String OUTDIR
 
   command <<<
-    kallisto quant -o outputDir -i ${INDEX} ${READ1} ${READ2}
-    tar -zcvf quant.tar.gz outputDir    
+    kallisto quant -o ${OUTDIR} -i ${INDEX} ${READ1} ${READ2}
+    tar -zcvf ${OUTDIR}.quant.tar.gz ${OUTDIR}    
   >>>
 
   output {
-    File TAR = "quant.tar.gz"
+    File TAR = "${OUTDIR}.quant.tar.gz"
   }
 }

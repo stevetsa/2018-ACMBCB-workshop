@@ -1,0 +1,3 @@
+#!/bin/bash
+'/bin/bash' '/Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-index/execution/script.submit' < /dev/null || { rc=$?; if [ "$rc" -gt "128" ]; then echo $rc; else echo -1; fi } > /Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-index/execution/rc &
+echo $!

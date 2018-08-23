@@ -1,0 +1,89 @@
+[2018-08-23 14:26:57,40] [info] Running with database db.url = jdbc:hsqldb:mem:18a17a27-78ac-425a-9a88-4ba9f085ff8d;shutdown=false;hsqldb.tx=mvcc
+[2018-08-23 14:27:04,20] [info] Running migration RenameWorkflowOptionsInMetadata with a read batch size of 100000 and a write batch size of 100000
+[2018-08-23 14:27:04,21] [info] [RenameWorkflowOptionsInMetadata] 100%
+[2018-08-23 14:27:04,31] [info] Running with database db.url = jdbc:hsqldb:mem:8c67593c-7a81-4be9-b797-dc22e2eb435f;shutdown=false;hsqldb.tx=mvcc
+[2018-08-23 14:27:04,89] [info] Slf4jLogger started
+[2018-08-23 14:27:05,28] [info] Workflow heartbeat configuration:
+{
+  "cromwellId" : "cromid-14e1e80",
+  "heartbeatInterval" : "2 minutes",
+  "ttl" : "10 minutes",
+  "writeBatchSize" : 10000,
+  "writeThreshold" : 10000
+}
+[2018-08-23 14:27:05,45] [info] Metadata summary refreshing every 2 seconds.
+[2018-08-23 14:27:05,51] [info] WriteMetadataActor configured to flush with batch size 200 and process rate 5 seconds.
+[2018-08-23 14:27:05,52] [info] CallCacheWriteActor configured to flush with batch size 100 and process rate 3 seconds.
+[2018-08-23 14:27:05,52] [info] KvWriteActor configured to flush with batch size 200 and process rate 5 seconds.
+[2018-08-23 14:27:06,33] [info] JobExecutionTokenDispenser - Distribution rate: 50 per 1 seconds.
+[2018-08-23 14:27:06,39] [info] SingleWorkflowRunnerActor: Version 34
+[2018-08-23 14:27:06,40] [info] SingleWorkflowRunnerActor: Submitting workflow
+[2018-08-23 14:27:06,47] [info] Unspecified type (Unspecified version) workflow 816921b3-54ee-467d-9b6b-9a5bf9cc3018 submitted
+[2018-08-23 14:27:06,52] [info] SingleWorkflowRunnerActor: Workflow submitted [38;5;2m816921b3-54ee-467d-9b6b-9a5bf9cc3018[0m
+[2018-08-23 14:27:06,53] [info] 1 new workflows fetched
+[2018-08-23 14:27:06,53] [info] WorkflowManagerActor Starting workflow [38;5;2m816921b3-54ee-467d-9b6b-9a5bf9cc3018[0m
+[2018-08-23 14:27:06,53] [info] WorkflowManagerActor Successfully started WorkflowActor-816921b3-54ee-467d-9b6b-9a5bf9cc3018
+[2018-08-23 14:27:06,54] [info] Retrieved 1 workflows from the WorkflowStoreActor
+[2018-08-23 14:27:06,54] [[38;5;220mwarn[0m] SingleWorkflowRunnerActor: received unexpected message: Done in state RunningSwraData
+[2018-08-23 14:27:06,55] [[38;5;220mwarn[0m] Couldn't find a suitable DSN, defaulting to a Noop one.
+[2018-08-23 14:27:06,56] [info] Using noop to send events.
+[2018-08-23 14:27:06,59] [info] WorkflowStoreHeartbeatWriteActor configured to flush with batch size 10000 and process rate 2 minutes.
+[2018-08-23 14:27:06,64] [info] MaterializeWorkflowDescriptorActor [[38;5;2m816921b3[0m]: Parsing workflow as WDL draft-2
+[2018-08-23 14:27:07,52] [info] MaterializeWorkflowDescriptorActor [[38;5;2m816921b3[0m]: Call-to-Backend assignments: kallisto.quant -> Local, kallisto.index -> Local
+[2018-08-23 14:27:09,90] [info] WorkflowExecutionActor-816921b3-54ee-467d-9b6b-9a5bf9cc3018 [[38;5;2m816921b3[0m]: Starting kallisto.index
+[2018-08-23 14:27:11,04] [info] BackgroundConfigAsyncJobExecutionActor [[38;5;2m816921b3[0mkallisto.index:NA:1]: [38;5;5mkallisto index -i transcript_index /Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-index/inputs/-780157667/transcripts.fasta.gz[0m
+[2018-08-23 14:27:11,09] [info] BackgroundConfigAsyncJobExecutionActor [[38;5;2m816921b3[0mkallisto.index:NA:1]: executing: /bin/bash /Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-index/execution/script
+[2018-08-23 14:27:15,55] [info] BackgroundConfigAsyncJobExecutionActor [[38;5;2m816921b3[0mkallisto.index:NA:1]: job id: 128
+[2018-08-23 14:27:15,56] [info] BackgroundConfigAsyncJobExecutionActor [[38;5;2m816921b3[0mkallisto.index:NA:1]: Status change from - to Done
+[2018-08-23 14:27:17,03] [info] WorkflowExecutionActor-816921b3-54ee-467d-9b6b-9a5bf9cc3018 [[38;5;2m816921b3[0m]: Starting kallisto.quant
+[2018-08-23 14:27:17,37] [info] BackgroundConfigAsyncJobExecutionActor [[38;5;2m816921b3[0mkallisto.quant:NA:1]: [38;5;5mkallisto quant -o Sample000Kallisto -i /Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-quant/inputs/-365897363/transcript_index /Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-quant/inputs/-780157667/reads_2.fastq.gz /Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-quant/inputs/-780157667/reads_2.fastq.gz
+tar -zcvf Sample000Kallisto.quant.tar.gz Sample000Kallisto[0m
+[2018-08-23 14:27:17,38] [info] BackgroundConfigAsyncJobExecutionActor [[38;5;2m816921b3[0mkallisto.quant:NA:1]: executing: /bin/bash /Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-quant/execution/script
+[2018-08-23 14:27:20,55] [info] BackgroundConfigAsyncJobExecutionActor [[38;5;2m816921b3[0mkallisto.quant:NA:1]: job id: 151
+[2018-08-23 14:27:20,56] [info] BackgroundConfigAsyncJobExecutionActor [[38;5;2m816921b3[0mkallisto.quant:NA:1]: Status change from - to Done
+[2018-08-23 14:27:22,14] [info] WorkflowExecutionActor-816921b3-54ee-467d-9b6b-9a5bf9cc3018 [[38;5;2m816921b3[0m]: Workflow kallisto complete. Final Outputs:
+{
+  "kallisto.index.indexFASTA": "/Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-index/execution/transcript_index",
+  "kallisto.quant.TAR": "/Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-quant/execution/Sample000Kallisto.quant.tar.gz"
+}
+[2018-08-23 14:27:22,20] [info] WorkflowManagerActor WorkflowActor-816921b3-54ee-467d-9b6b-9a5bf9cc3018 is in a terminal state: WorkflowSucceededState
+[2018-08-23 14:27:26,61] [info] SingleWorkflowRunnerActor workflow finished with status 'Succeeded'.
+{
+  "outputs": {
+    "kallisto.quant.TAR": "/Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-quant/execution/Sample000Kallisto.quant.tar.gz",
+    "kallisto.index.indexFASTA": "/Users/tsang/git/2018-ACMBCB-workshop/ISB-CGC/cromwell-executions/kallisto/816921b3-54ee-467d-9b6b-9a5bf9cc3018/call-index/execution/transcript_index"
+  },
+  "id": "816921b3-54ee-467d-9b6b-9a5bf9cc3018"
+}
+[2018-08-23 14:27:30,60] [info] Workflow polling stopped
+[2018-08-23 14:27:30,61] [info] Shutting down WorkflowStoreActor - Timeout = 5 seconds
+[2018-08-23 14:27:30,62] [info] Shutting down WorkflowLogCopyRouter - Timeout = 5 seconds
+[2018-08-23 14:27:30,63] [info] Aborting all running workflows.
+[2018-08-23 14:27:30,63] [info] Shutting down JobExecutionTokenDispenser - Timeout = 5 seconds
+[2018-08-23 14:27:30,63] [info] WorkflowStoreActor stopped
+[2018-08-23 14:27:30,63] [info] JobExecutionTokenDispenser stopped
+[2018-08-23 14:27:30,64] [info] WorkflowLogCopyRouter stopped
+[2018-08-23 14:27:30,64] [info] Shutting down WorkflowManagerActor - Timeout = 3600 seconds
+[2018-08-23 14:27:30,64] [info] WorkflowManagerActor All workflows finished
+[2018-08-23 14:27:30,64] [info] WorkflowManagerActor stopped
+[2018-08-23 14:27:30,65] [info] Connection pools shut down
+[2018-08-23 14:27:30,65] [info] Shutting down SubWorkflowStoreActor - Timeout = 1800 seconds
+[2018-08-23 14:27:30,65] [info] Shutting down JobStoreActor - Timeout = 1800 seconds
+[2018-08-23 14:27:30,65] [info] SubWorkflowStoreActor stopped
+[2018-08-23 14:27:30,65] [info] Shutting down CallCacheWriteActor - Timeout = 1800 seconds
+[2018-08-23 14:27:30,65] [info] Shutting down ServiceRegistryActor - Timeout = 1800 seconds
+[2018-08-23 14:27:30,65] [info] CallCacheWriteActor Shutting down: 0 queued messages to process
+[2018-08-23 14:27:30,65] [info] WriteMetadataActor Shutting down: 0 queued messages to process
+[2018-08-23 14:27:30,65] [info] KvWriteActor Shutting down: 0 queued messages to process
+[2018-08-23 14:27:30,66] [info] ServiceRegistryActor stopped
+[2018-08-23 14:27:30,65] [info] Shutting down DockerHashActor - Timeout = 1800 seconds
+[2018-08-23 14:27:30,66] [info] CallCacheWriteActor stopped
+[2018-08-23 14:27:30,65] [info] JobStoreActor stopped
+[2018-08-23 14:27:30,66] [info] Shutting down IoProxy - Timeout = 1800 seconds
+[2018-08-23 14:27:30,66] [info] DockerHashActor stopped
+[2018-08-23 14:27:30,66] [info] IoProxy stopped
+[2018-08-23 14:27:30,70] [info] Database closed
+[2018-08-23 14:27:30,71] [info] Stream materializer shut down
+[2018-08-23 14:27:30,76] [info] Automatic shutdown of the async connection
+[2018-08-23 14:27:30,76] [info] Gracefully shutdown sentry threads.
+[2018-08-23 14:27:30,76] [info] Shutdown finished.

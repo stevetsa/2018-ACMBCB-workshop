@@ -1,0 +1,7 @@
+{
+  "kallisto.read2": "../reads_2.fastq.gz",
+  "kallisto.outdirname": "Sample000Kallisto",
+  "kallisto.fasta": "../transcripts.fasta.gz",
+  "kallisto.read1": "../reads_2.fastq.gz"
+}
+
