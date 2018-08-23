@@ -1,0 +1,1003 @@
+{
+  "sbg:id": "tsang/2018-acmbcb-workshop/kallisto-workflow/1",
+  "inputs": [
+    {
+      "type": [
+        {
+          "type": "array",
+          "items": "File"
+        }
+      ],
+      "sbg:y": 96.9921817779541,
+      "sbg:fileTypes": "FASTA,FA,FASTA.GZ,FA.GZ,INDEX",
+      "sbg:x": 119.99996185302734,
+      "label": "reference_fasta_file",
+      "id": "#reference_fasta_file"
+    },
+    {
+      "type": [
+        {
+          "type": "array",
+          "items": "File"
+        }
+      ],
+      "sbg:y": 370.9921897799941,
+      "sbg:fileTypes": "FASTA, FASTQ, FA, FQ, FASTQ.GZ, FQ.GZ, FASTQ.BZ2, FQ.BZ2",
+      "sbg:x": 97.99997997283936,
+      "label": "reads",
+      "id": "#reads"
+    }
+  ],
+  "$namespaces": {
+    "sbg": "https://sevenbridges.com"
+  },
+  "sbg:revisionNotes": null,
+  "hints": [],
+  "sbg:image_url": "https://cgc.sbgenomics.com/ns/brood/images/tsang/2018-acmbcb-workshop/kallisto-workflow/1.png",
+  "sbg:canvas_x": 0,
+  "outputs": [
+    {
+      "type": [
+        "null",
+        "File"
+      ],
+      "sbg:includeInPorts": true,
+      "sbg:y": 65.9921875,
+      "sbg:fileTypes": "JSON",
+      "source": [
+        "#Kallisto_Quant.run_info_json"
+      ],
+      "sbg:x": 1314.9999694824219,
+      "label": "run_info_json",
+      "id": "#run_info_json"
+    },
+    {
+      "type": [
+        "null",
+        "File"
+      ],
+      "sbg:includeInPorts": true,
+      "sbg:y": 187.99219131469727,
+      "sbg:fileTypes": "SAM, STDOUT",
+      "source": [
+        "#Kallisto_Quant.pseudoalignment_or_stdout"
+      ],
+      "sbg:x": 1312.0000610351562,
+      "label": "pseudoalignment_or_stdout",
+      "id": "#pseudoalignment_or_stdout"
+    },
+    {
+      "type": [
+        "null",
+        "File"
+      ],
+      "sbg:includeInPorts": true,
+      "sbg:y": 316.99218368530273,
+      "sbg:fileTypes": "TXT",
+      "source": [
+        "#Kallisto_Quant.fusion_candidates"
+      ],
+      "sbg:x": 1327.0000305175781,
+      "label": "fusion_candidates",
+      "id": "#fusion_candidates"
+    },
+    {
+      "type": [
+        "null",
+        "File"
+      ],
+      "sbg:includeInPorts": true,
+      "sbg:y": 434.9921875,
+      "sbg:fileTypes": "TSV",
+      "source": [
+        "#Kallisto_Quant.abundance_plaintext"
+      ],
+      "sbg:x": 1321.9999694824219,
+      "label": "abundance_plaintext",
+      "id": "#abundance_plaintext"
+    },
+    {
+      "type": [
+        "null",
+        "File"
+      ],
+      "sbg:includeInPorts": true,
+      "sbg:y": 541.9922103881836,
+      "sbg:fileTypes": "H5",
+      "source": [
+        "#Kallisto_Quant.abundance_h5"
+      ],
+      "sbg:x": 1315.0000915527344,
+      "label": "abundance_h5",
+      "id": "#abundance_h5"
+    }
+  ],
+  "id": "https://cgc-api.sbgenomics.com/v2/apps/tsang/2018-acmbcb-workshop/kallisto-workflow/1/raw/",
+  "sbg:appVersion": [
+    "sbg:draft-2"
+  ],
+  "label": "kallisto-workflow",
+  "sbg:projectName": "2018-ACMBCB-workshop",
+  "sbg:revision": 1,
+  "sbg:contributors": [
+    "tsang"
+  ],
+  "sbg:validationErrors": [],
+  "cwlVersion": "sbg:draft-2",
+  "sbg:revisionsInfo": [
+    {
+      "sbg:revisionNotes": null,
+      "sbg:modifiedBy": "tsang",
+      "sbg:modifiedOn": 1534970110,
+      "sbg:revision": 0
+    },
+    {
+      "sbg:revisionNotes": null,
+      "sbg:modifiedBy": "tsang",
+      "sbg:modifiedOn": 1534970196,
+      "sbg:revision": 1
+    }
+  ],
+  "class": "Workflow",
+  "steps": [
+    {
+      "outputs": [
+        {
+          "id": "#Kallisto_Index.kallisto_index"
+        }
+      ],
+      "sbg:y": 209.3086051940918,
+      "run": {
+        "sbg:id": "tsang/2018-acmbcb-workshop/kallisto-index-0-43-1/0",
+        "inputs": [
+          {
+            "type": [
+              "null",
+              "int"
+            ],
+            "description": "K-mer lenght. It should be an odd number. Maximum value is 31.",
+            "label": "K-mer length",
+            "sbg:category": "Options",
+            "id": "#kmer_length",
+            "sbg:toolDefaultValue": "31",
+            "inputBinding": {
+              "prefix": "-k",
+              "sbg:cmdInclude": true,
+              "position": 1,
+              "separate": true
+            }
+          },
+          {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Replace repeated target names with unique names.",
+            "label": "Make unique",
+            "sbg:category": "Options",
+            "id": "#make_unique",
+            "sbg:toolDefaultValue": "off",
+            "inputBinding": {
+              "prefix": "--make-unique",
+              "sbg:cmdInclude": true,
+              "position": 2,
+              "separate": true
+            }
+          },
+          {
+            "type": [
+              {
+                "type": "array",
+                "items": "File"
+              }
+            ],
+            "description": "FASTA formatted file(s) of target sequences. An already generated Kallisto Index file can be provided instead to skip indexing and save some time if this tool is a part of a workflow.",
+            "sbg:fileTypes": "FASTA,FA,FASTA.GZ,FA.GZ,INDEX",
+            "sbg:stageInput": "link",
+            "label": "Transcriptome FASTA or Kallisto Index",
+            "inputBinding": {
+              "itemSeparator": null,
+              "separate": true,
+              "position": 3,
+              "sbg:cmdInclude": true
+            },
+            "id": "#reference_fasta_file"
+          }
+        ],
+        "arguments": [
+          {
+            "valueFrom": {
+              "script": "{\n  var fa = [].concat($job.inputs.reference_fasta_file)[0]\n  if (fa.path.toLowerCase().endsWith('gz')) {\n    var str = fa.path.split('/').pop().split('.').slice(0,-2).join('.')\n  } else {\n    var str = fa.path.split('/').pop().split('.').slice(0,-1).join('.')\n  }\n  return str + \".kallisto-0.43.1.index\"\n}",
+              "engine": "#cwl-js-engine",
+              "class": "Expression"
+            },
+            "prefix": "-i",
+            "separate": true,
+            "position": 0
+          }
+        ],
+        "sbg:copyOf": "admin/sbg-public-data/kallisto-index-0-43-1/9",
+        "sbg:publisher": "sbg",
+        "sbg:projectName": "2018-ACMBCB-workshop",
+        "$namespaces": {
+          "sbg": "https://sevenbridges.com"
+        },
+        "sbg:revisionNotes": "Copy of admin/sbg-public-data/kallisto-index-0-43-1/9",
+        "sbg:contributors": [
+          "tsang"
+        ],
+        "sbg:image_url": null,
+        "sbg:links": [
+          {
+            "id": "http://pachterlab.github.io/kallisto/",
+            "label": "Kallisto Homepage"
+          },
+          {
+            "id": "https://github.com/pachterlab/kallisto",
+            "label": "Kallisto Source Code"
+          },
+          {
+            "id": "https://github.com/pachterlab/kallisto/releases/download/v0.43.1/kallisto_linux-v0.43.1.tar.gz",
+            "label": "Kallisto Download"
+          },
+          {
+            "id": "http://arxiv.org/abs/1505.02710",
+            "label": "Kallisto Publications"
+          },
+          {
+            "id": "https://pachterlab.github.io/kallisto/manual.html",
+            "label": "Kallisto Documentation"
+          }
+        ],
+        "sbg:categories": [
+          "RNA",
+          "Indexing"
+        ],
+        "class": "CommandLineTool",
+        "sbg:validationErrors": [],
+        "sbg:createdOn": 1534970089,
+        "id": "https://cgc-api.sbgenomics.com/v2/apps/tsang/2018-acmbcb-workshop/kallisto-index-0-43-1/0/raw/",
+        "outputs": [
+          {
+            "type": [
+              "null",
+              "File"
+            ],
+            "id": "#kallisto_index",
+            "description": "Trancripts index file.",
+            "label": "Transcripts index",
+            "outputBinding": {
+              "sbg:metadata": {
+                "index_name": {
+                  "script": "{\n  var fa = [].concat($job.inputs.reference_fasta_file)[0]\n  if (fa.path.toLowerCase().endsWith('gz')) {\n    var str = fa.path.split('/').pop().split('.').slice(0,-2).join('.')\n  } else {\n    var str = fa.path.split('/').pop().split('.').slice(0,-1).join('.')\n  }\n  \n  var tmp = str.split('.').pop()\n  if (tmp.toLowerCase()!='index') {\n    return str + \".kallisto-0.43.1.index\"\n  } else if (tmp.toLowerCase()=='index') {\n    return [].concat($job.inputs.reference_fasta_file)[0].metadata.index_name\n  }\n}",
+                  "engine": "#cwl-js-engine",
+                  "class": "Expression"
+                },
+                "kmer_length": {
+                  "script": "{\n  return $job.inputs.kmer_length ? $job.inputs.kmer_length : 31\n}",
+                  "engine": "#cwl-js-engine",
+                  "class": "Expression"
+                }
+              },
+              "sbg:inheritMetadataFrom": "#reference_fasta_file",
+              "glob": "*index"
+            }
+          }
+        ],
+        "sbg:toolkitVersion": "0.43.1",
+        "requirements": [
+          {
+            "id": "#cwl-js-engine",
+            "requirements": [
+              {
+                "dockerPull": "rabix/js-engine",
+                "class": "DockerRequirement"
+              }
+            ],
+            "class": "ExpressionEngineRequirement"
+          }
+        ],
+        "sbg:appVersion": [
+          "sbg:draft-2"
+        ],
+        "baseCommand": [
+          {
+            "script": "{\n  var x = [].concat($job.inputs.reference_fasta_file)[0].path.split('/').pop()\n  var y = x.split('.').pop().toLowerCase()\n  if (y == 'fa' || y == 'fasta' || y == 'gz') {\n    return \"kallisto index\"\n  } else if (y == 'index' || y == 'INDEX') {\n    return \"echo 'Tar bundle provided, skipping indexing.' \"\n  }\n}\n",
+            "engine": "#cwl-js-engine",
+            "class": "Expression"
+          }
+        ],
+        "sbg:project": "tsang/2018-acmbcb-workshop",
+        "description": "The **Kallisto Index** tool builds an index from a transcriptome FASTA formatted file of target sequences, necessary for the **Kallisto Quant** tool.  \n\n**Pseudoalignment** is a process of assigning reads to transcripts, without doing the exact base-to-base alignment. Seeing that for estimating transcript abundances, the main information needed is which transcript a read originates from and not the actual mapping coordinates, the idea with the **Kallisto** tool was to implement a procedure that does exactly that, using a *transcriptome De Brujin graph* as the main data structure for the underlying algorithm [1].\n\nThe result is a software running at speeds orders of magnitude faster than other tools which utilise the full likelihood model, while keeping near-optimal probabilistic RNA-seq quantification results. [1]\n\n*A list of **all inputs and parameters** with corresponding descriptions can be found at the bottom of this page.*\n\n### Common Use Cases\n\n- A **Transcriptome FASTA file** needs to be provided as an input to the tool. \n\n### Changes Introduced by Seven Bridges\n\n- An already generated **Kallisto index file** can be provided to the **Kallisto Index** tool (**Transcriptome FASTA or Kallisto Index** input), in order to skip indexing and save a little bit of time if this tool is part of a bigger workflow and there already is an index file that can be provided.\n\n### Common Issues and Important Notes\n\n- The input FASTA file (if provided instead of the already generated kallisto index) should be a transcriptome FASTA, not a genomic FASTA.\n\n### Performance Benchmarking\n\nThe **Kallisto Index** tool builds the index structure for **Kallisto** in a very short time, therefore it is expected that all tasks using this tool should finish under 5 minutes, costing around $0.05 on the default c4.2xlarge instance (AWS). \n\n*Cost can be significantly reduced by  using **spot instances**. Visit the [Knowledge Center](https://docs.sevenbridges.com/docs/about-spot-instances) for more details.*\n\n\n### References\n\n[1] [Kallisto paper](https://www.nature.com/articles/nbt.3519)",
+        "stdin": "",
+        "stdout": "",
+        "sbg:createdBy": "tsang",
+        "label": "Kallisto Index",
+        "cwlVersion": "sbg:draft-2",
+        "sbg:latestRevision": 0,
+        "sbg:sbgMaintained": false,
+        "sbg:job": {
+          "inputs": {
+            "kmer_length": null,
+            "make_unique": true,
+            "reference_fasta_file": [
+              {
+                "path": "/path/to/reference_fasta_file.FASTA",
+                "size": 0,
+                "secondaryFiles": [],
+                "metadata": {
+                  "index_name": "reference_fasta_file2"
+                },
+                "class": "File"
+              }
+            ]
+          },
+          "allocatedResources": {
+            "mem": 15000,
+            "cpu": 8
+          }
+        },
+        "successCodes": [],
+        "sbg:revision": 0,
+        "hints": [
+          {
+            "value": 8,
+            "class": "sbg:CPURequirement"
+          },
+          {
+            "value": 15000,
+            "class": "sbg:MemRequirement"
+          },
+          {
+            "dockerImageId": "",
+            "dockerPull": "images.sbgenomics.com/uros_sipetic/kallisto:0.43.1",
+            "class": "DockerRequirement"
+          }
+        ],
+        "sbg:license": "BSD 2-clause FreeBSD License",
+        "sbg:toolkit": "Kallisto",
+        "sbg:toolAuthor": "Nicolas Bray, Harold Pimentel, P\u00e1ll Melsted, Lior Pachter",
+        "temporaryFailCodes": [],
+        "sbg:modifiedOn": 1534970089,
+        "sbg:modifiedBy": "tsang",
+        "sbg:cmdPreview": "kallisto index -i reference_fasta_file.kallisto-0.43.1.index  /path/to/reference_fasta_file.FASTA",
+        "sbg:revisionsInfo": [
+          {
+            "sbg:revisionNotes": "Copy of admin/sbg-public-data/kallisto-index-0-43-1/9",
+            "sbg:modifiedBy": "tsang",
+            "sbg:modifiedOn": 1534970089,
+            "sbg:revision": 0
+          }
+        ]
+      },
+      "sbg:x": 519.0000686645508,
+      "id": "#Kallisto_Index",
+      "inputs": [
+        {
+          "id": "#Kallisto_Index.kmer_length"
+        },
+        {
+          "id": "#Kallisto_Index.make_unique"
+        },
+        {
+          "source": [
+            "#reference_fasta_file"
+          ],
+          "id": "#Kallisto_Index.reference_fasta_file"
+        }
+      ]
+    },
+    {
+      "outputs": [
+        {
+          "id": "#Kallisto_Quant.abundance_h5"
+        },
+        {
+          "id": "#Kallisto_Quant.abundance_plaintext"
+        },
+        {
+          "id": "#Kallisto_Quant.pseudoalignment_or_stdout"
+        },
+        {
+          "id": "#Kallisto_Quant.run_info_json"
+        },
+        {
+          "id": "#Kallisto_Quant.fusion_candidates"
+        }
+      ],
+      "sbg:y": 323.30860137939453,
+      "run": {
+        "sbg:id": "tsang/2018-acmbcb-workshop/kallisto-quant-0-43-1/0",
+        "inputs": [
+          {
+            "type": [
+              {
+                "type": "array",
+                "items": "File"
+              }
+            ],
+            "description": "Input FASTQ read files.",
+            "sbg:fileTypes": "FASTA, FASTQ, FA, FQ, FASTQ.GZ, FQ.GZ, FASTQ.BZ2, FQ.BZ2",
+            "label": "Reads (FASTQ files)",
+            "inputBinding": {
+              "itemSeparator": " ",
+              "sbg:cmdInclude": true,
+              "position": 10,
+              "valueFrom": {
+                "script": "{\n    function get_meta_map(m, file, meta) {\n        if (meta in file.metadata) {\n            return m[file.metadata[meta]]\n        } else {\n            return m['Undefined']\n        }\n    }\n\n    function create_new_map(map, file, meta) {\n        if (meta in file.metadata) {\n            map[file.metadata[meta]] = {}\n            return map[file.metadata[meta]]\n        } else {\n            map['Undefined'] = {}\n            return map['Undefined']\n        }\n    }\n\n    arr = [].concat($job.inputs.reads)\n    map = {}\n    \n    if (arr.length==1) {\n      return \"--single \" + arr[0].path\n    }\n\n    for (i in arr) {\n\n        sm_map = get_meta_map(map, arr[i], 'sample_id')\n        if (!sm_map) sm_map = create_new_map(map, arr[i], 'sample_id')\n\n        lb_map = get_meta_map(sm_map, arr[i], 'library_id')\n        if (!lb_map) lb_map = create_new_map(sm_map, arr[i], 'library_id')\n\n        pu_map = get_meta_map(lb_map, arr[i], 'platform_unit_id')\n        if (!pu_map) pu_map = create_new_map(lb_map, arr[i], 'platform_unit_id')\n\n        if ('file_segment_number' in arr[i].metadata) {\n            if (pu_map[arr[i].metadata['file_segment_number']]) {\n                a = pu_map[arr[i].metadata['file_segment_number']]\n                ar = [].concat(a)\n                ar = ar.concat(arr[i])\n                pu_map[arr[i].metadata['file_segment_number']] = ar\n            } else pu_map[arr[i].metadata['file_segment_number']] = [].concat(arr[i])\n        } else {\n            if (pu_map['Undefined']) {\n                a = pu_map['Undefined']\n                ar = [].concat(a)\n                ar = ar.concat(arr[i])\n                pu_map['Undefined'] = ar\n            } else {\n                pu_map['Undefined'] = [].concat(arr[i])\n            }\n        }\n    }\n    tuple_list = []\n    for (sm in map)\n        for (lb in map[sm])\n            for (pu in map[sm][lb]) {\n                list = []\n                for (fsm in map[sm][lb][pu]) {\n                    list = map[sm][lb][pu][fsm]\n                \ttuple_list.push(list)\n                }\n            }\n    //return tuple_list[0][0].path\n  \n  pe_1 = []\n  pe_2 = []\n  se = []\n  if (tuple_list[0].length==1) {\n    for (i=0; i<tuple_list.length; i++) {\n      se = se.concat(tuple_list[i][0].path)\n    }\n  }\n  for (i=0; i<tuple_list.length; i++) {\n    for (j=0; j<tuple_list[i].length; j++) {\n      if (tuple_list[i][j].metadata.paired_end==1) {\n        pe_1 = pe_1.concat(tuple_list[i][j].path)\n      } else if (tuple_list[i][j].metadata.paired_end==2) {\n        pe_2 = pe_2.concat(tuple_list[i][j].path)\n      }\n    }\n  }\n  \n  \n  if(pe_2.length == 0){\n      cmd = \"\"\n      if (se.length > 0) {\n        tmp = se\n      } else if (pe_1.length > 0) {\n        tmp = pe_1\n      }\n      for (i=0; i<tmp.length; i++) {\n        cmd += tmp[i] + \" \"\n      }\n      return \"--single \" + cmd\n  } else if (pe_2.length > 0) {\n    cmd = \"\"\n    for (i=0; i<pe_1.length; i++) {\n      cmd += pe_1[i] + \" \" + pe_2[i] + \" \"\n    }\n    return cmd\n  } else {\n    return \"\"\n  }\n\n}",
+                "engine": "#cwl-js-engine",
+                "class": "Expression"
+              },
+              "separate": true
+            },
+            "id": "#reads"
+          },
+          {
+            "type": [
+              "File"
+            ],
+            "sbg:stageInput": "link",
+            "sbg:fileTypes": "INDEX",
+            "label": "Kallisto transcript index file",
+            "description": "Index file, outputed by Kallisto Index tool, to be used for quantification.",
+            "id": "#kallisto_index"
+          },
+          {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "sbg:stageInput": null,
+            "sbg:category": "Options",
+            "label": "Bias",
+            "sbg:toolDefaultValue": "off",
+            "inputBinding": {
+              "prefix": "--bias",
+              "sbg:cmdInclude": true,
+              "position": 2,
+              "separate": true
+            },
+            "id": "#bias",
+            "description": "Perform sequence based bias correction."
+          },
+          {
+            "type": [
+              "null",
+              "int"
+            ],
+            "sbg:stageInput": null,
+            "sbg:category": "Options",
+            "label": "Bootstrap samples",
+            "sbg:toolDefaultValue": "0",
+            "inputBinding": {
+              "prefix": "-b",
+              "sbg:cmdInclude": true,
+              "position": 3,
+              "separate": true
+            },
+            "id": "#bootstrap_samples",
+            "description": "Number of bootstrap samples."
+          },
+          {
+            "type": [
+              "null",
+              "int"
+            ],
+            "sbg:stageInput": null,
+            "sbg:category": "Options",
+            "label": "Seed",
+            "sbg:toolDefaultValue": "42",
+            "inputBinding": {
+              "prefix": "--seed",
+              "sbg:cmdInclude": true,
+              "position": 4,
+              "separate": true
+            },
+            "id": "#seed",
+            "description": "Seed for the bootstrap sampling."
+          },
+          {
+            "type": [
+              "null",
+              "float"
+            ],
+            "description": "Estimated average fragment length. In the case of single-end reads, this option must be used to specify the average fragment length. Typical Illumina libraries produce fragment lengths ranging from 180\u2013200 bp but it\u2019s best to determine this from a library quantification with an instrument such as an Agilent Bioanalyzer. For paired-end reads, the average fragment length can be directly estimated from the reads and the program will do so if this option is not specified (this is the preferred run mode).",
+            "sbg:stageInput": null,
+            "label": "Fragment length",
+            "sbg:category": "Options",
+            "inputBinding": {
+              "prefix": "-l",
+              "sbg:cmdInclude": true,
+              "position": 7,
+              "separate": true
+            },
+            "id": "#fragment_length"
+          },
+          {
+            "type": [
+              "null",
+              "float"
+            ],
+            "sbg:stageInput": null,
+            "sbg:category": "Options",
+            "label": "Fragment length standard deviation",
+            "sbg:toolDefaultValue": "Value is estimated from the input data.",
+            "inputBinding": {
+              "prefix": "-s",
+              "sbg:cmdInclude": true,
+              "position": 8,
+              "separate": true
+            },
+            "id": "#fragment_length_sd",
+            "description": "Estimated standard deviation of fragment length."
+          },
+          {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "sbg:stageInput": null,
+            "sbg:category": "Options",
+            "label": "Pseudobam",
+            "sbg:toolDefaultValue": "off",
+            "inputBinding": {
+              "prefix": "--pseudobam",
+              "sbg:cmdInclude": true,
+              "position": 9,
+              "separate": true
+            },
+            "id": "#pseudobam",
+            "description": "Output pseudoalignments in SAM format."
+          },
+          {
+            "type": [
+              "null",
+              {
+                "type": "enum",
+                "symbols": [
+                  "none",
+                  "forward",
+                  "reverse"
+                ],
+                "name": "strandedness"
+              }
+            ],
+            "description": "This option defines the strandedness of the RNA-Seq reads. It recognizes three values: 'none', 'forward' and 'reverse'. Option 'none' refers to non-strand-specific protocols, 'forward' means all (upstream) reads are derived from the forwards strand and 'reverse' means all (upstream) reads are derived from the reverse strand. For Illumina TruSeq Stranded protocols, please use the 'reverse' option.",
+            "sbg:category": "Options",
+            "label": "Strandedness",
+            "inputBinding": {
+              "valueFrom": {
+                "script": "{\n  if ($job.inputs.strandedness) {\n    if ($job.inputs.strandedness == 'forward') {\n      return '--fw-stranded'\n    } else if ($job.inputs.strandedness == 'reverse') {\n      return '--rf-stranded'\n    } else if ($job.inputs.strandedness == 'none') {\n      return ''\n    } else {\n      return ''\n    }\n  } else {\n    return ''\n  }\n}",
+                "engine": "#cwl-js-engine",
+                "class": "Expression"
+              },
+              "sbg:cmdInclude": true,
+              "position": 6,
+              "separate": true
+            },
+            "sbg:toolDefaultValue": "Off",
+            "id": "#strandedness"
+          },
+          {
+            "type": [
+              "null",
+              "int"
+            ],
+            "sbg:stageInput": null,
+            "sbg:category": "Options",
+            "label": "Number of threads",
+            "sbg:toolDefaultValue": "8",
+            "id": "#number_of_threads",
+            "description": "Number of threads to be used."
+          },
+          {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Search for fusions for pizzly.",
+            "sbg:category": "Options",
+            "label": "Fusion",
+            "inputBinding": {
+              "prefix": "--fusion",
+              "sbg:cmdInclude": true,
+              "position": 5,
+              "separate": true
+            },
+            "sbg:toolDefaultValue": "Off",
+            "id": "#fusion"
+          },
+          {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Output prefix to be added to all output filenames.",
+            "sbg:toolDefaultValue": "sample_id.kallisto_quant",
+            "label": "Output prefix",
+            "sbg:category": "Options",
+            "id": "#output_prefix"
+          }
+        ],
+        "arguments": [
+          {
+            "position": 0,
+            "prefix": "-i",
+            "separate": true,
+            "valueFrom": {
+              "script": "{\nvar str = $job.inputs.kallisto_index.path.split(\"/\").pop();\nreturn str\n}",
+              "engine": "#cwl-js-engine",
+              "class": "Expression"
+            }
+          },
+          {
+            "position": 9,
+            "prefix": "-t",
+            "separate": true,
+            "valueFrom": {
+              "script": "{\n  if ($job.inputs.pseudobam==true) {\n    return 1\n  } else {\n    if ($job.inputs.number_of_threads) {\n      return $job.inputs.number_of_threads\n    } else {\n      return 8\n    }\n  }\n}",
+              "engine": "#cwl-js-engine",
+              "class": "Expression"
+            }
+          },
+          {
+            "position": 80,
+            "separate": true,
+            "valueFrom": {
+              "script": "{\n    var arr = [].concat($job.inputs.reads)\n    if (arr[0].metadata && arr[0].metadata.sample_id) {\n      var basename = arr[0].metadata.sample_id\n    } else {\n      var basename = arr[0].path.split('/').pop().split('.')[0]\n    }\n    if ($job.inputs.output_prefix) {\n      var x = $job.inputs.output_prefix\n    } else {\n      var x = basename + \".kallisto_quant\"\n    }\n  \n  if ($job.inputs.pseudobam==true) {\n    return \"> \" + x + \".pseudoalignment.sam\"\n  } else {\n    return \"> \" + x + \".stdout\"\n  }\n} ",
+              "engine": "#cwl-js-engine",
+              "class": "Expression"
+            }
+          },
+          {
+            "position": 81,
+            "separate": true,
+            "valueFrom": {
+              "script": "{\n  var arr = [].concat($job.inputs.reads)\n  if (arr[0].metadata && arr[0].metadata.sample_id) {\n    var basename = arr[0].metadata.sample_id\n  } else {\n    var basename = arr[0].path.split('/').pop().split('.')[0]\n  }\n  var folder = basename + \".kallisto_quant\"\n  if ($job.inputs.output_prefix) {\n    var x = $job.inputs.output_prefix\n  } else {\n    var x = basename + \".kallisto_quant\"\n  }\n  return \"&& mv \" + folder + \"/\" + \"abundance.h5 \" + folder + \"/\" + x + \".abundance.h5\"\n  \n}",
+              "engine": "#cwl-js-engine",
+              "class": "Expression"
+            }
+          },
+          {
+            "position": 82,
+            "separate": true,
+            "valueFrom": {
+              "script": "{\n  var arr = [].concat($job.inputs.reads)\n  if (arr[0].metadata && arr[0].metadata.sample_id) {\n    var basename = arr[0].metadata.sample_id\n  } else {\n    var basename = arr[0].path.split('/').pop().split('.')[0]\n  }\n  var folder = basename + \".kallisto_quant\"\n  if ($job.inputs.output_prefix) {\n    var x = $job.inputs.output_prefix\n  } else {\n    var x = basename + \".kallisto_quant\"\n  }\n  return \"&& mv \" + folder + \"/\" + \"abundance.tsv \" + folder + \"/\" + x + \".abundance.tsv\"  \n}",
+              "engine": "#cwl-js-engine",
+              "class": "Expression"
+            }
+          },
+          {
+            "position": 1,
+            "prefix": "-o",
+            "separate": true,
+            "valueFrom": {
+              "script": "{\n  var arr = [].concat($job.inputs.reads)\n  if (arr[0].metadata && arr[0].metadata.sample_id) {\n    var basename = arr[0].metadata.sample_id\n  } else {\n    var basename = arr[0].path.split('/').pop().split('.')[0]\n  }\n  return basename + \".kallisto_quant\"\n}\n  \n  ",
+              "engine": "#cwl-js-engine",
+              "class": "Expression"
+            }
+          },
+          {
+            "position": 83,
+            "separate": true,
+            "valueFrom": {
+              "script": "{\n  var arr = [].concat($job.inputs.reads)\n  if (arr[0].metadata && arr[0].metadata.sample_id) {\n    var basename = arr[0].metadata.sample_id\n  } else {\n    var basename = arr[0].path.split('/').pop().split('.')[0]\n  }\n  var folder = basename + \".kallisto_quant\"\n  if ($job.inputs.output_prefix) {\n    var x = $job.inputs.output_prefix\n  } else {\n    var x = basename + \".kallisto_quant\"\n  }\n  return \"&& mv \" + folder + \"/\" + \"run_info.json \" + folder + \"/\" + x + \".run_info.json\"\n}",
+              "engine": "#cwl-js-engine",
+              "class": "Expression"
+            }
+          },
+          {
+            "position": 84,
+            "separate": true,
+            "valueFrom": {
+              "script": "{\n  if ($job.inputs.fusion) {\n    var arr = [].concat($job.inputs.reads)\n    if (arr[0].metadata && arr[0].metadata.sample_id) {\n      var basename = arr[0].metadata.sample_id\n    } else {\n      var basename = arr[0].path.split('/').pop().split('.')[0]\n    }\n    var folder = basename + \".kallisto_quant\"\n    if ($job.inputs.output_prefix) {\n      var x = $job.inputs.output_prefix\n    } else {\n      var x = basename + \".kallisto_quant\"\n    }\n    COMMAND =  \"&& mv \" + folder + \"/\" + \"fusion.txt \" + folder + \"/\" + x + \".fusion.txt \"\n    return COMMAND\n  }\n}",
+              "engine": "#cwl-js-engine",
+              "class": "Expression"
+            }
+          }
+        ],
+        "sbg:copyOf": "admin/sbg-public-data/kallisto-quant-0-43-1/27",
+        "sbg:publisher": "sbg",
+        "sbg:projectName": "2018-ACMBCB-workshop",
+        "$namespaces": {
+          "sbg": "https://sevenbridges.com"
+        },
+        "sbg:revisionNotes": "Copy of admin/sbg-public-data/kallisto-quant-0-43-1/27",
+        "sbg:contributors": [
+          "tsang"
+        ],
+        "sbg:categories": [
+          "RNA",
+          "Quantification"
+        ],
+        "sbg:links": [
+          {
+            "label": "Kallisto Homepage",
+            "id": "http://pachterlab.github.io/kallisto/"
+          },
+          {
+            "label": "Kallisto Source Code",
+            "id": "https://github.com/pachterlab/kallisto"
+          },
+          {
+            "label": "Kallisto Download",
+            "id": "https://github.com/pachterlab/kallisto/releases/download/v0.43.1/kallisto_linux-v0.43.1.tar.gz"
+          },
+          {
+            "label": "Kallisto Publications",
+            "id": "http://arxiv.org/abs/1505.02710"
+          },
+          {
+            "label": "Kallisto Documentation",
+            "id": "https://pachterlab.github.io/kallisto/manual.html"
+          }
+        ],
+        "sbg:image_url": null,
+        "class": "CommandLineTool",
+        "sbg:validationErrors": [],
+        "stdin": "",
+        "id": "https://cgc-api.sbgenomics.com/v2/apps/tsang/2018-acmbcb-workshop/kallisto-quant-0-43-1/0/raw/",
+        "outputs": [
+          {
+            "type": [
+              "null",
+              "File"
+            ],
+            "outputBinding": {
+              "sbg:inheritMetadataFrom": "#reads",
+              "glob": {
+                "script": "{\n  var arr = [].concat($job.inputs.reads)\n  if (arr[0].metadata && arr[0].metadata.sample_id) {\n    var basename = arr[0].metadata.sample_id\n  } else {\n    var basename = arr[0].path.split('/').pop().split('.')[0]\n  }\n  var folder = basename + \".kallisto_quant\"\n  if ($job.inputs.output_prefix) {\n    var x = $job.inputs.output_prefix\n  } else {\n    var x = basename + \".kallisto_quant\"\n  }\n  return folder + \"/\" + x + \".abundance.h5\"  \n}\n",
+                "engine": "#cwl-js-engine",
+                "class": "Expression"
+              }
+            },
+            "sbg:fileTypes": "H5",
+            "label": "HDF5 formatted abundance file",
+            "description": "Abundance file in HDF5 format. Can be used by Sleuth tool for further analysis in this format.",
+            "id": "#abundance_h5"
+          },
+          {
+            "type": [
+              "null",
+              "File"
+            ],
+            "outputBinding": {
+              "sbg:inheritMetadataFrom": "#reads",
+              "glob": {
+                "script": "{\n  var arr = [].concat($job.inputs.reads)\n  if (arr[0].metadata && arr[0].metadata.sample_id) {\n    var basename = arr[0].metadata.sample_id\n  } else {\n    var basename = arr[0].path.split('/').pop().split('.')[0]\n  }\n  var folder = basename + \".kallisto_quant\"\n  if ($job.inputs.output_prefix) {\n    var x = $job.inputs.output_prefix\n  } else {\n    var x = basename + \".kallisto_quant\"\n  }\n  return folder + \"/\" + x + \".abundance.tsv\"\n}",
+                "engine": "#cwl-js-engine",
+                "class": "Expression"
+              }
+            },
+            "sbg:fileTypes": "TSV",
+            "label": "Abundance file in plaintext format",
+            "description": "Abundance file in plaintext format.",
+            "id": "#abundance_plaintext"
+          },
+          {
+            "type": [
+              "null",
+              "File"
+            ],
+            "outputBinding": {
+              "sbg:inheritMetadataFrom": "#reads",
+              "glob": {
+                "script": "{\n  var arr = [].concat($job.inputs.reads)\n  if (arr[0].metadata && arr[0].metadata.sample_id) {\n    var basename = arr[0].metadata.sample_id\n  } else {\n    var basename = arr[0].path.split('/').pop().split('.')[0]\n  }\n  if ($job.inputs.output_prefix) {\n    var x = $job.inputs.output_prefix\n  } else {\n    var x = basename + \".kallisto_quant\"\n  }\n  if ($job.inputs.pseudobam==true) {\n    return x + \".pseudoalignment.sam\"\n  } else {\n    return x + \".stdout\"\n  }\n}",
+                "engine": "#cwl-js-engine",
+                "class": "Expression"
+              }
+            },
+            "sbg:fileTypes": "SAM, STDOUT",
+            "label": "Pseudoalignment or standard output",
+            "description": "SAM file containing pseudoalignments. This file can be further converted to BAM using SamTools. If the 'pseudobam' option is not turned out, Kallisto standard output is written here instead, which is useful for tools like MultiQC.",
+            "id": "#pseudoalignment_or_stdout"
+          },
+          {
+            "type": [
+              "null",
+              "File"
+            ],
+            "outputBinding": {
+              "sbg:inheritMetadataFrom": "#reads",
+              "glob": {
+                "script": "{\n  var arr = [].concat($job.inputs.reads)\n  if (arr[0].metadata && arr[0].metadata.sample_id) {\n    var basename = arr[0].metadata.sample_id\n  } else {\n    var basename = arr[0].path.split('/').pop().split('.')[0]\n  }\n  var folder = basename + \".kallisto_quant\"\n  if ($job.inputs.output_prefix) {\n    var x = $job.inputs.output_prefix\n  } else {\n    var x = basename + \".kallisto_quant\"\n  }\n  return folder + \"/\" + x + \".run_info.json\"\n}\n",
+                "engine": "#cwl-js-engine",
+                "class": "Expression"
+              }
+            },
+            "sbg:fileTypes": "JSON",
+            "label": "Run info JSON",
+            "description": "A JSON file containing information and logs about the run.",
+            "id": "#run_info_json"
+          },
+          {
+            "type": [
+              "null",
+              "File"
+            ],
+            "outputBinding": {
+              "sbg:metadata": {
+                "kmer_length": {
+                  "script": "{\n  return ($job.inputs.kallisto_index.metadata && $job.inputs.kallisto_index.metadata.kmer_length) ? $job.inputs.kallisto_index.metadata.kmer_length : \"\"\n}",
+                  "engine": "#cwl-js-engine",
+                  "class": "Expression"
+                }
+              },
+              "sbg:inheritMetadataFrom": "#reads",
+              "glob": {
+                "script": "{\n  var arr = [].concat($job.inputs.reads)\n  if (arr[0].metadata && arr[0].metadata.sample_id) {\n    var basename = arr[0].metadata.sample_id\n  } else {\n    var basename = arr[0].path.split('/').pop().split('.')[0]\n  }\n  var folder = basename + \".kallisto_quant\"\n  if ($job.inputs.output_prefix) {\n    var x = $job.inputs.output_prefix\n  } else {\n    var x = basename + \".kallisto_quant\"\n  }\n  return folder + \"/\" + x + \".fusion.txt\"\n}",
+                "engine": "#cwl-js-engine",
+                "class": "Expression"
+              }
+            },
+            "sbg:fileTypes": "TXT",
+            "label": "Fusion candidates",
+            "description": "Read pairs involved in fusions. To be used for downstream analysis by Pizzly.",
+            "id": "#fusion_candidates"
+          }
+        ],
+        "sbg:toolkitVersion": "0.43.1",
+        "requirements": [
+          {
+            "id": "#cwl-js-engine",
+            "requirements": [
+              {
+                "dockerPull": "rabix/js-engine",
+                "class": "DockerRequirement"
+              }
+            ],
+            "class": "ExpressionEngineRequirement"
+          }
+        ],
+        "sbg:appVersion": [
+          "sbg:draft-2"
+        ],
+        "baseCommand": [
+          "kallisto",
+          "quant"
+        ],
+        "sbg:project": "tsang/2018-acmbcb-workshop",
+        "description": "The **Kallisto Quant** tool infers transcript abundance estimates from the **RNA-seq data**, using a process called **pseudoalignment**. \n\n**Pseudoalignment** is a process of assigning reads to transcripts, without doing the exact base-to-base alignment. Seeing that for estimating transcript abundances, the main information needed is which transcript a read originates from and not the actual mapping coordinates, the idea with the **Kallisto** tool was to implement a procedure that does exactly that, using a *transcriptome De Brujin graph* as the main data structure for the underlying algorithm [1].\n\nThe result is a software running at speeds orders of magnitude faster than other tools which utilise the full likelihood model, while keeping near-optimal probabilistic RNA-seq quantification results [1]. \n\n*A list of **all inputs and parameters** with corresponding descriptions can be found at the bottom of this page.*\n\n### Common Use Cases\n\n- The main input to the tool are **Reads (FASTQ files)** that can be single end or paired end, either gzipped or not. \n- A **Kallisto transcript index file** generated by the **Kallisto Index** tool needs to be provided. \n- The **Kallisto Quant** tool will generate transcript abundance estimates in plaintext and H5 formats (useful for processing by downstream tools for differential expression, like [Sleuth](https://pachterlab.github.io/sleuth/about)). \n\n### Changes Introduced by Seven Bridges\n\n- The **Abundance file in plaintext format** will always be outputted by default (there is no need to specify the `--plaintext` parameter). \n- The options for specifying strandedness (`--fr-stranded` and `rf-stranded`) have been merged into a single options of enum type - **Strandedness**. \n\n### Common Issues and Important Notes\n\n- It is important to properly set the **Paired End** metadata field for all paired-end read files that are found on the input **Reads (FASTQ files)** node.\n- For FASTQ reads in multi-file format (i.e. two FASTQ files for paired-end 1 and two FASTQ files for paired-end2), the proper metadata needs to be set (the following hierarchy is valid: **Sample ID/Library ID/Platform unit ID/File segment number**).\n- Outputting the **pseudobam** file does not support multi-threading. So if you specify the **Pseudobam** (`--pseudobam`) option, only 1 core will be used (instead of the default 8 cores) and the overall speed of the execution might be slower.\n\n### Performance Benchmarking\n\nThe main advantage of the Kallisto software is that it is not computationally challenging, as alignment in the traditional sense is not performed. Therefore, it is optimized to be run in scatter mode, so a c4.8xlarge  (AWS) instance is used by default. \n\nBelow is a table describing the runtimes and task costs for a couple of samples with different file sizes.\n\n| Experiment type |  Input size | Paired-end | # of reads | Read length | Duration |  Cost |  Instance  (AWS)|\n|:---------------:|:-----------:|:----------:|:----------:|:-----------:|:--------:|:-----:|:----------:|\n|     RNA-Seq     |  2 x 4.5 GB |     Yes    |     20M     |     101     |   5min   | $0.05| c4.2xlarge |\n|     RNA-Seq     | 2 x 17.4 GB |     Yes    |     76M     |     101     |   12min  | $0.10 | c4.2xlarge |\n\n*Cost can be significantly reduced by using **spot instances**. Visit the [knowledge center](https://docs.sevenbridges.com/docs/about-spot-instances) for more details.*\n\n### References\n\n[1] [Kallisto paper](https://www.nature.com/articles/nbt.3519)",
+        "sbg:createdOn": 1534970092,
+        "stdout": "",
+        "sbg:createdBy": "tsang",
+        "label": "Kallisto Quant",
+        "cwlVersion": "sbg:draft-2",
+        "sbg:latestRevision": 0,
+        "sbg:sbgMaintained": false,
+        "sbg:job": {
+          "inputs": {
+            "strandedness": "none",
+            "kallisto_index": {
+              "path": "/path/to/kallisto_index.ext",
+              "size": 0,
+              "secondaryFiles": [],
+              "metadata": {
+                "index_name": "index",
+                "kmer_length": "31"
+              },
+              "class": "File"
+            },
+            "pseudobam": false,
+            "fusion": true,
+            "bias": true,
+            "fragment_length": 0.8424081719809365,
+            "seed": 5,
+            "reads": [
+              {
+                "path": "/path/to/sampleA_lane1_pe1.fastq",
+                "secondaryFiles": [],
+                "metadata": {
+                  "paired_end": "1",
+                  "file_segment_number": "1"
+                }
+              }
+            ],
+            "bootstrap_samples": 9,
+            "fragment_length_sd": 2.062839265649399,
+            "number_of_threads": null,
+            "output_prefix": ""
+          },
+          "allocatedResources": {
+            "mem": 15000,
+            "cpu": 8
+          }
+        },
+        "successCodes": [],
+        "sbg:revision": 0,
+        "hints": [
+          {
+            "value": {
+              "script": "{\n  return $job.inputs.number_of_threads ? $job.inputs.number_of_threads : 8\n}",
+              "engine": "#cwl-js-engine",
+              "class": "Expression"
+            },
+            "class": "sbg:CPURequirement"
+          },
+          {
+            "value": 15000,
+            "class": "sbg:MemRequirement"
+          },
+          {
+            "dockerImageId": "",
+            "dockerPull": "images.sbgenomics.com/uros_sipetic/kallisto:0.43.1",
+            "class": "DockerRequirement"
+          }
+        ],
+        "sbg:license": "BSD 2-clause FreeBSD License",
+        "sbg:toolkit": "Kallisto",
+        "sbg:toolAuthor": "Nicolas Bray, Harold Pimentel, P\u00e1ll Melsted, Lior Pachter",
+        "temporaryFailCodes": [],
+        "sbg:modifiedOn": 1534970092,
+        "sbg:modifiedBy": "tsang",
+        "sbg:cmdPreview": "kallisto quant -i kallisto_index.ext -o sampleA_lane1_pe1.kallisto_quant -t 8  --single /path/to/sampleA_lane1_pe1.fastq  > sampleA_lane1_pe1.kallisto_quant.stdout  && mv sampleA_lane1_pe1.kallisto_quant/abundance.h5 sampleA_lane1_pe1.kallisto_quant/sampleA_lane1_pe1.kallisto_quant.abundance.h5  && mv sampleA_lane1_pe1.kallisto_quant/abundance.tsv sampleA_lane1_pe1.kallisto_quant/sampleA_lane1_pe1.kallisto_quant.abundance.tsv  && mv sampleA_lane1_pe1.kallisto_quant/run_info.json sampleA_lane1_pe1.kallisto_quant/sampleA_lane1_pe1.kallisto_quant.run_info.json  && mv sampleA_lane1_pe1.kallisto_quant/fusion.txt sampleA_lane1_pe1.kallisto_quant/sampleA_lane1_pe1.kallisto_quant.fusion.txt",
+        "sbg:revisionsInfo": [
+          {
+            "sbg:revisionNotes": "Copy of admin/sbg-public-data/kallisto-quant-0-43-1/27",
+            "sbg:modifiedBy": "tsang",
+            "sbg:modifiedOn": 1534970092,
+            "sbg:revision": 0
+          }
+        ]
+      },
+      "sbg:x": 730.0000839233398,
+      "id": "#Kallisto_Quant",
+      "inputs": [
+        {
+          "source": [
+            "#reads"
+          ],
+          "id": "#Kallisto_Quant.reads"
+        },
+        {
+          "source": [
+            "#Kallisto_Index.kallisto_index"
+          ],
+          "id": "#Kallisto_Quant.kallisto_index"
+        },
+        {
+          "id": "#Kallisto_Quant.bias"
+        },
+        {
+          "id": "#Kallisto_Quant.bootstrap_samples"
+        },
+        {
+          "id": "#Kallisto_Quant.seed"
+        },
+        {
+          "id": "#Kallisto_Quant.fragment_length"
+        },
+        {
+          "id": "#Kallisto_Quant.fragment_length_sd"
+        },
+        {
+          "id": "#Kallisto_Quant.pseudobam"
+        },
+        {
+          "id": "#Kallisto_Quant.strandedness"
+        },
+        {
+          "id": "#Kallisto_Quant.number_of_threads"
+        },
+        {
+          "id": "#Kallisto_Quant.fusion"
+        },
+        {
+          "id": "#Kallisto_Quant.output_prefix"
+        }
+      ]
+    }
+  ],
+  "sbg:project": "tsang/2018-acmbcb-workshop",
+  "description": "",
+  "sbg:createdOn": 1534970110,
+  "sbg:sbgMaintained": false,
+  "sbg:createdBy": "tsang",
+  "sbg:modifiedBy": "tsang",
+  "sbg:latestRevision": 1,
+  "sbg:canvas_y": 0,
+  "sbg:canvas_zoom": 1,
+  "sbg:publisher": "sbg",
+  "sbg:modifiedOn": 1534970196,
+  "requirements": []
+}
