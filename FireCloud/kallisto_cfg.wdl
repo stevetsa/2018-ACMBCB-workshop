@@ -25,7 +25,13 @@ task index {
     kallisto index -i transcript_index ${FASTA}
   >>>
   
-  output {
+  runtime {
+    docker : "stevetsa/2018-acmbcb-workshop"
+    memory: "2G"
+    cpu: "1"
+  }
+ 
+ output {
     File indexFASTA = "transcript_index"
   }
 }
@@ -40,8 +46,15 @@ task quant {
     kallisto quant -o ${OUTDIR} -i ${INDEX} ${READ1} ${READ2}
     tar -zcvf ${OUTDIR}.quant.tar.gz ${OUTDIR}    
   >>>
-
+  
+  runtime {
+    docker : "stevetsa/2018-acmbcb-workshop"
+    memory: "2G"
+    cpu: "1"
+  }
+  
   output {
     File TAR = "*quant.tar.gz"
   }
 }
+
