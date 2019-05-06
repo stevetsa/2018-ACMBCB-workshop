@@ -54,7 +54,7 @@ task quant {
   }
   
   output {
-    File TAR = "*quant.tar.gz"
+    File TAR = "${OUTDIR}.quant.tar.gz"
   }
 }
 
